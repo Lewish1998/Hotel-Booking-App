@@ -11,7 +11,6 @@ const BookingsList = ({bookings}) => {
     <div>
         <ul>
             {bookingNodes}
-            
         </ul>
     </div>
   )
