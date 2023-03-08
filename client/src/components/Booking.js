@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Booking = () => {
+const Booking = ({book}) => {
   return (
-    <div>Booking</div>
+    <div>
+      <li>{book.name}-----{book.email}-----{book.checkedIn}</li>
+    </div>
   )
 }
 

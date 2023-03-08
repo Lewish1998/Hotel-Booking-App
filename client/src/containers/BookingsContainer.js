@@ -13,12 +13,16 @@ const BookingsContainer = () => {
     getBookings().then((data) => {setBookings(data)})
   }, []); 
 
+  const addBooking = (data) => {
+    setBookings([...Bookings, data]);
+  }
+
   return (
     <div>
     <h1>California Hotel</h1>
-    <BookingForm/>
+    <BookingForm addBooking={addBooking}/>
     <BookingDetailUpdate/>
-    <BookingsList/>
+    <BookingsList bookings={Bookings}/>
     
     </div>
   )
