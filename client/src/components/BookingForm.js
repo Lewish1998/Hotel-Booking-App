@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { postBooking } from './BookingService'
 
 const BookingForm = () => {
 
@@ -7,14 +8,33 @@ const BookingForm = () => {
         email: "",
         checkedIn: false,
     })
+
+    const onChange = (event) =>{
+      const newFormData = Object.assign({}, formData);
+      newFormData[event.target.name] = event.target.value;
+      setFormData(newFormData);
+    }
+      const onSubmit = (event) =>{
+        event.preventDefault();
+        postBooking(formData).then((data)=>{
+            // addBooking(data);
+        })
+
+        setFormData({
+          name: "",
+          email: "",
+          checkedIn: false,
+      });
+  }
   return (
 
 
     <div>
-    <form>
-        <input type="text" id="name" value={formData.name} placeholder="Your Name"/>
+    <form onSubmit={onSubmit}>
+        <input onChange={onChange} type="text" id="name" name="name" placeholder="Your Name" value={formData.name}/>
 
-        <input type="text" id="email" value={formData.email} placeholder="Your Email"/>
+        <input onChange={onChange} type="text" id="email" name="email" placeholder="Your Email" value={formData.email}/>
+
 
         <input type="submit" value="Save" id="save"/>
     </form>
@@ -22,4 +42,4 @@ const BookingForm = () => {
   )
 }
 
-export default BookingForm
+export default BookingForm;
