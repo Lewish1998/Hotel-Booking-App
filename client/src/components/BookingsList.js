@@ -7,6 +7,7 @@ const BookingsList = () => {
         <ul>
             <li><Booking/></li>
             <li><Booking/></li>
+            
         </ul>
     </div>
   )
