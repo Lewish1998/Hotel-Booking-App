@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { postBooking } from './BookingService'
 
-const BookingForm = () => {
+const BookingForm = ({addBooking}) => {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -17,7 +17,7 @@ const BookingForm = () => {
       const onSubmit = (event) =>{
         event.preventDefault();
         postBooking(formData).then((data)=>{
-            // addBooking(data);
+            addBooking(data);
         })
 
         setFormData({

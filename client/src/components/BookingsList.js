@@ -1,12 +1,17 @@
 import React from 'react'
 import Booking from './Booking'
 
-const BookingsList = () => {
+const BookingsList = ({bookings}) => {
+
+  const bookingNodes= bookings.map((book,index) => {
+    return <Booking key={index} book={book}/>
+  })
+
   return (
     <div>
         <ul>
-            <li><Booking/></li>
-            <li><Booking/></li>
+            {bookingNodes}
+            
         </ul>
     </div>
   )
